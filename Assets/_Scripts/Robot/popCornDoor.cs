@@ -12,8 +12,8 @@ public class popCornDoor : MonoBehaviour
 	{
 		robot = this.GetComponentInParent<robotControl>();
 		on = false;
-		spr.spring = hingeJoint.spring.spring;
-		spr.damper = hingeJoint.spring.damper;
+		spr.spring = GetComponent<HingeJoint>().spring.spring;
+		spr.damper = GetComponent<HingeJoint>().spring.damper;
 	}
 	
 	// Update is called once per frame
@@ -38,6 +38,6 @@ public class popCornDoor : MonoBehaviour
 		{	
 			spr.targetPosition = 0f;
 		}
-		hingeJoint.spring = spr;
+		GetComponent<HingeJoint>().spring = spr;
 	}
 }

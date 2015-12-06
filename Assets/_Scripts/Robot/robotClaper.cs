@@ -38,6 +38,6 @@ public class robotClaper : MonoBehaviour
 		{	
 			spr.targetPosition = 0f;
 		}
-		hingeJoint.spring = spr;
+		GetComponent<HingeJoint>().spring = spr;
 	}
 }

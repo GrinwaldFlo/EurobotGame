@@ -26,8 +26,8 @@ public class robotCollision : MonoBehaviour
 		}
 		else if(col.gameObject.tag == gVar.tagPlayer)
 		{
-			float s1 = robot.rigidbody.velocity.sqrMagnitude;
-			float s2 = col.gameObject.rigidbody.velocity.sqrMagnitude;
+			float s1 = robot.GetComponent<Rigidbody>().velocity.sqrMagnitude;
+			float s2 = col.gameObject.GetComponent<Rigidbody>().velocity.sqrMagnitude;
 
 			if(s1 < gVar.minSpeedChoc && s2 < gVar.minSpeedChoc)
 			{

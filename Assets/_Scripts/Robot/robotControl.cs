@@ -43,7 +43,7 @@ public class robotControl : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		rigidbody.centerOfMass = new Vector3(0f, 0.01f, 0f);
+		GetComponent<Rigidbody>().centerOfMass = new Vector3(0f, 0.01f, 0f);
 
 		if (gameController.gameRunning == 0)
 		{
@@ -111,12 +111,13 @@ public class robotControl : MonoBehaviour
 			wheelR.motorTorque = 0f;
 		}
 
-		/*movement = new Vector3(v, 0.0f, 0.0f);
+	/*	movement = new Vector3(v, 0.0f, 0.0f);
 		
 		movementRobot = transform.TransformVector(movement);
 		movementSpeed = movementRobot * speed [curSpeed] * Time.deltaTime;
-		rigidbody.AddForce(movementSpeed, ForceMode.Force);
-		rigidbody.AddTorque(transform.up * h * speed [curSpeed] * p * Time.deltaTime, ForceMode.Force);*/
+
+		//rigidbody.AddForce(movementSpeed, ForceMode.Force);
+		//rigidbody.AddTorque(transform.up * h * speed [curSpeed] * p * Time.deltaTime, ForceMode.Force);*/
 	}
 
 

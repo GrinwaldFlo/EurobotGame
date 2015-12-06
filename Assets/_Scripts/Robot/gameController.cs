@@ -22,8 +22,8 @@ public class gameController : MonoBehaviour
 	float startCounterVal;
 	float counter;
 
-	public Canvas canvasHelp;
-	public Canvas canvasStart;
+	public GameObject canvasHelp;
+	public GameObject canvasStart;
 
 	internal standController[] lstStand;
 	internal glassController[] lstGlass;
@@ -62,7 +62,7 @@ public class gameController : MonoBehaviour
 		for (int i = 0; i < standLocation.Length; i++)
 		{
 			tmpObj = (GameObject)Instantiate(stand, standLocation [i], q);
-			tmpObj.renderer.material = yellow;
+			tmpObj.GetComponent<Renderer>().material = yellow;
 			standController st = tmpObj.GetComponent<standController>();
 			st.player = enPlayer.yellow;
 			lstStand[i] = st;
@@ -71,7 +71,7 @@ public class gameController : MonoBehaviour
 		for (int i = 0; i < standLocation.Length; i++)
 		{
 			tmpObj = (GameObject)Instantiate(stand, new Vector3(standLocation [i].x, standLocation [i].y, 3f - standLocation [i].z), q);
-			tmpObj.renderer.material = green;
+			tmpObj.GetComponent<Renderer>().material = green;
 			standController st = tmpObj.GetComponent<standController>();
 			st.player = enPlayer.green;
 			lstStand[i + standLocation.Length] = st;
@@ -81,8 +81,8 @@ public class gameController : MonoBehaviour
 		{
 			gameStep = 2;
 			gameRunning = 1;
-			canvasHelp.enabled = false;
-			canvasStart.enabled = false;
+			canvasHelp.SetActive(false);
+			canvasStart.SetActive(false);
 			txtTimerCounter.enabled = false;
 			counter = 900;
 		}
@@ -93,7 +93,7 @@ public class gameController : MonoBehaviour
 	{
 		if (Input.GetKeyDown(gVar.keyHelp))
 		{
-			canvasHelp.enabled = !canvasHelp.enabled;
+			canvasHelp.SetActive(!canvasHelp.activeSelf);
 		}else if(Input.GetKeyDown(gVar.keyExit) || Input.GetKeyDown(gVar.keyCancel))
 		{
 			Application.Quit();
@@ -109,7 +109,7 @@ public class gameController : MonoBehaviour
 					scoreCounterCinemaCentral[] sc = scoreZone.GetComponentsInChildren<scoreCounterCinemaCentral>();
 					sc[0].UpdateScore();
 					sc[1].UpdateScore();
-					canvasStart.enabled = false;
+					canvasStart.SetActive(false);
 					txtTimerCounter.enabled = true;
 					startCounterVal = 2f;
 					gameStep++;
@@ -124,7 +124,7 @@ public class gameController : MonoBehaviour
 				{
 					gameStep++;
 					gameRunning = 1;
-					canvasHelp.enabled = false;
+					canvasHelp.SetActive(false);
 					txtTimerCounter.enabled = false;
 					counter = 90;
 				}
@@ -141,8 +141,8 @@ public class gameController : MonoBehaviour
 				{
 					gameRunning = 0;
 					gameStep++;
-					canvasHelp.enabled = true;
-					canvasStart.enabled = true;
+					canvasHelp.SetActive(true);
+					canvasStart.SetActive(true);
 				}
 				break;
 			case 3:

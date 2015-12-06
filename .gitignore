@@ -66,5 +66,4 @@ $RECYCLE.BIN/
 # Mercurial
 # =========================
 /.hg
-
 .hgignore

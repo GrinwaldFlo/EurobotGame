@@ -190,11 +190,11 @@ public class ventouse : MonoBehaviour
 		if (curObj == null && other.gameObject.tag == "LightBulb")
 		{
 			curObj = other.gameObject;
-			curObj.rigidbody.isKinematic = true;
+			curObj.GetComponent<Rigidbody>().isKinematic = true;
 		}
 		else if(curObj != null)
 		{
-			curObj.rigidbody.isKinematic = false;
+			curObj.GetComponent<Rigidbody>().isKinematic = false;
 			curObj = null;
 		}
 

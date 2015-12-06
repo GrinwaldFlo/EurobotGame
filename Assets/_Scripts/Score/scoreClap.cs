@@ -8,7 +8,7 @@ public class scoreClap : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		if(renderer.material.name.ToUpper().Contains("YELLOW"))
+		if(GetComponent<Renderer>().material.name.ToUpper().Contains("YELLOW"))
 			player = enPlayer.yellow;
 		else
 			player = enPlayer.green;

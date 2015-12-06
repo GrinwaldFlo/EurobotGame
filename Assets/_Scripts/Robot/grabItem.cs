@@ -55,7 +55,7 @@ public class grabItem : MonoBehaviour
 			{
 				if (objHolded [i] != null)
 				{
-					objHolded [i].rigidbody.isKinematic = false;			
+					objHolded [i].GetComponent<Rigidbody>().isKinematic = false;			
 					objHolded [i].transform.parent = null;
 					objHolded [i] = null;
 				}
@@ -112,16 +112,16 @@ public class grabItem : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.rigidbody == null || holdNoObjTime > 0f || other.gameObject.tag == gVar.tagScore)
+		if (other.gameObject.GetComponent<Rigidbody>() == null || holdNoObjTime > 0f || other.gameObject.tag == gVar.tagScore)
 			return;
 		
-		Vector3 curA = other.gameObject.rigidbody.rotation.eulerAngles;
+		Vector3 curA = other.gameObject.GetComponent<Rigidbody>().rotation.eulerAngles;
 		
 		if (other.gameObject.tag == gVar.tagGlass && holdingType == -1 && genFunc.inRange(curA.x, 0f, 1f) && genFunc.inRange(curA.z, 0f, 1f))
 		{
 			objHolded [0] = other.gameObject;
 			objHolded [0].transform.parent = grabbed.transform;
-			objHolded [0].rigidbody.isKinematic = true;
+			objHolded [0].GetComponent<Rigidbody>().isKinematic = true;
 			
 			holdingPositionOriginal = other.transform.localPosition;
 			holdingLerp = 0;
@@ -132,7 +132,7 @@ public class grabItem : MonoBehaviour
 		{
 			objHolded [0] = other.gameObject;
 			objHolded [0].transform.parent = grabbed.transform;
-			objHolded [0].rigidbody.isKinematic = true;
+			objHolded [0].GetComponent<Rigidbody>().isKinematic = true;
 			
 			holdingPositionOriginal = other.transform.localPosition;
 			holdingLerp = 0;

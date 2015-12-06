@@ -17,6 +17,12 @@ public class keyMapController : MonoBehaviour
 
 	enKeyboardLayout keyboardLayout;
 	int useNumLock;
+	bool isClosing = false;
+
+	public void OnApplicationQuit()
+	{
+		isClosing = true;
+	}
 
 	enum enKeyboardLayout
 	{
@@ -42,7 +48,6 @@ public class keyMapController : MonoBehaviour
 				break;
 		}
 
-		setLayoutNumLock(0);
 		switch (PlayerPrefs.GetInt(gVar.prefkeyNumLock))
 		{
 			case 0:
@@ -96,6 +101,8 @@ public class keyMapController : MonoBehaviour
 
 	void setLayoutNumLock(int value)
 	{
+		if (isClosing)
+			return;
 		useNumLock = value;
 		PlayerPrefs.SetInt(gVar.prefkeyNumLock, useNumLock);
 		PlayerPrefs.Save();

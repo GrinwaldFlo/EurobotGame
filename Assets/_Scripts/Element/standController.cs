@@ -16,10 +16,10 @@ public class standController : MonoBehaviour
 		{
 			curObj.transform.position = transform.TransformPoint(0f, 0f, 0.11f); //Vector3.Lerp(curObj.transform.position, transform.TransformPoint(0f, 0f, 0.11f), 0.5f);
 
-			Vector3 curA = gameObject.rigidbody.rotation.eulerAngles;
+			Vector3 curA = gameObject.GetComponent<Rigidbody>().rotation.eulerAngles;
 			if (!(genFunc.inRange(curA.x, 270f, 20f)))
 			{
-				curObj.rigidbody.isKinematic = false;
+				curObj.GetComponent<Rigidbody>().isKinematic = false;
 				curObj = null;
 			}
 		}
@@ -31,7 +31,7 @@ public class standController : MonoBehaviour
 			return;
 
 		// Check stand is straight
-		Vector3 curA = gameObject.rigidbody.rotation.eulerAngles;
+		Vector3 curA = gameObject.GetComponent<Rigidbody>().rotation.eulerAngles;
 
 		if (!(genFunc.inRange(curA.x, 270f, 1f)))
 			return;
@@ -39,7 +39,7 @@ public class standController : MonoBehaviour
 		if (curObj == null && other.gameObject.tag == "LightBulb")
 		{
 			curObj = other.gameObject;
-			curObj.rigidbody.isKinematic = true;
+			curObj.GetComponent<Rigidbody>().isKinematic = true;
 		}
 	}
 

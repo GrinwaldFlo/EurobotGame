@@ -19,7 +19,6 @@ public class robotMove : MonoBehaviour
 	public float[] torques;
 	public float[] brakes;
 
-	Vector3 movement;
 	public float maxSpeedMe;
 
 	// Use this for initialization
